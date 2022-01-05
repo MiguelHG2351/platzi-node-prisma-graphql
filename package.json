@@ -1,12 +1,25 @@
 {
-  "name": "platzi-node-prisma-graphql",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "private": "true",
+  "name": "platzi-graphql-fullstack",
+  "version": "0.1.0",
+  "description": "Saga de GraphQL Fullstack de Platzi",
+  "workspaces": [
+    "api",
+    "client",
+    "packages/*"
+  ],
+  "scripts": {},
+  "author": "@jonalvarezz",
+  "license": "MIT",
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "dependencies": {
+    "eslint": "7.x",
+    "prettier": "^2.4.1",
+    "typescript": "4.4.x"
+  }
 }

@@ -1,0 +1,16 @@
+{
+  "name": "api",
+  "version": "0.1.0",
+  "description": "Backend de nuestra aplicación con una API en GraphQL",
+  "scripts": {
+    "dev": "nodemon src/index.ts"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "apollo-server": "^2.14.0",
+    "graphql": "^14.6.0",
+    "nodemon": "^1.18.8",
+    "ts-node": "^8.0.2"
+  },
+  "license": "MIT"
+}
