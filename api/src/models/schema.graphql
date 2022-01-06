@@ -1,0 +1,53 @@
+scalar DateTime
+
+interface BaseModel {
+    id: ID!
+    createdAt: DateTime!
+    updatedAt: DateTime
+    deletedAt: DateTime
+}
+
+type Avocado implements BaseModel {
+    id: ID!
+    createdAt: DateTime!
+    updatedAt: DateTime
+    deletedAt: DateTime
+
+    name: String!
+    sku: String!
+    price: Float!
+    image: String!
+    attributes: AvocadoAttributes!
+}
+
+type AvocadoAttributes {
+    description: String!
+    shape: String!
+    hardiness: Float!
+    taste: String!
+}
+
+type AvocadoInput {
+    name: String!
+    sku: String!
+    price: Float!
+    image: String!
+    description: String!
+    shape: String!
+    hardiness: Float!
+    taste: String!
+}
+
+type Cart {
+    id: ID!
+    avocadoId: ID!
+}
+
+type Query {
+    getAvos: [Avocado]!
+    getAvo(id: ID!): Avocado
+}
+
+type Mutation {
+    createAvocado(data: AvocadoInput!): Avocado
+}
