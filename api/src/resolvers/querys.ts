@@ -1,9 +1,5 @@
 import { Avocado } from "./base/avocado.model"
 
-type context = {
-    avos: Avocado[]
-}
-
 export const querys = {
     find(root: unknown, args: unknown, context: {avos: Avocado[]}): Avocado[] {
         return context.avos;

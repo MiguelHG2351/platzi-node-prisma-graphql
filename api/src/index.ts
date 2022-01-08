@@ -31,7 +31,6 @@ const avos: Avocado[] = [
     },
   ]
 
-
 const server = new ApolloServer({
     typeDefs,
     resolvers,
