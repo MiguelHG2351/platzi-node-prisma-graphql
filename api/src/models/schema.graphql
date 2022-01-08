@@ -23,24 +23,18 @@ type Avocado implements BaseModel {
 type AvocadoAttributes {
     description: String!
     shape: String!
-    hardiness: Float!
+    hardiness: String!
     taste: String!
 }
 
-type AvocadoInput {
+input AvocadoInput {
     name: String!
-    sku: String!
     price: Float!
     image: String!
     description: String!
     shape: String!
-    hardiness: Float!
+    hardiness: String!
     taste: String!
-}
-
-type Cart {
-    id: ID!
-    avocadoId: ID!
 }
 
 type Query {
@@ -49,5 +43,5 @@ type Query {
 }
 
 type Mutation {
-    createAvocado(data: AvocadoInput!): Avocado
+    createAvo(data: AvocadoInput!): Avocado!
 }
