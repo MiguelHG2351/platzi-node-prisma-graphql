@@ -1,36 +1,31 @@
-import { Avocado } from "./base/avocado.model"
-import { createHash } from 'crypto'
+import { randomBytes } from 'crypto'
+import type { Avocado, Attributes } from '@prisma/client'
+import type { context } from './types'
 
 export const mutations = {
     createAvo(
         parent: unknown,
         {
           data
-        }: { data: Pick<Avocado, 'name' | 'price' | 'image'> & Avocado['attributes']},
-        context: { avos: Avocado[] },
-      ): Avocado {
-        const currentLength = context.avos.length
-        const newAvo: Avocado = {
-          id: String(currentLength + 1),
-          sku: createHash('sha256')
-            .update(data.name, 'utf8')
-            .digest('base64')
-            .slice(-6),
-          createdAt: new Date(),
-          updatedAt: new Date(),
-          deletedAt: undefined,
-          name: data.name,
-          price: data.price,
-          image: data.image,
-          attributes: {
-            description: data.description,
-            shape: data.shape,
-            hardiness: data.hardiness,
-            taste: data.taste,
-          },
-        }
-      
-        context.avos.push(newAvo)
-        return newAvo
+        }: { data: Pick<Avocado, 'name' | 'price' | 'image'> & Attributes},
+        context: context,
+      ): Promise<Avocado> {
+          console.log(data.description)
+        return context.orm.avocado.create({
+            data: {
+                name: data.name,
+                price: data.price,
+                image: data.image,
+                sku: randomBytes(8).toString('hex'),
+                attributes: {
+                    create: {
+                        description: data.description,
+                        shape: data.shape,
+                        hardiness: data.hardiness,
+                        taste: data.taste,
+                    }
+                }
+            }
+        })
       }
 }

@@ -39,7 +39,7 @@ input AvocadoInput {
 
 type Query {
     getAvos: [Avocado]!
-    getAvo(id: ID!): Avocado
+    getAvo(id: Int!): Avocado
 }
 
 type Mutation {

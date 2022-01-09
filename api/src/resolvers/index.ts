@@ -1,7 +1,7 @@
-import * as scalars from './base/scalars.model'
+import * as scalars from './scalars'
 import { querys } from './querys'
 import { mutations } from './mutations'
-import { resolver } from './base/avocado.model'
+import { resolver } from './avocado.model'
 
 export default {
   ...scalars,

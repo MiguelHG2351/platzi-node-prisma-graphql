@@ -1,11 +1,16 @@
-import { Avocado } from "./base/avocado.model"
+// import { Avocado } from "./base/avocado.model"
+import type { Avocado } from '@prisma/client'
+import type { context } from './types'
 
 export const querys = {
-    find(root: unknown, args: unknown, context: {avos: Avocado[]}): Avocado[] {
-        return context.avos;
+    async find(root: unknown, args: unknown, context: context): Promise<Avocado[]> {
+        return await context.orm.avocado.findMany();
     },
-    
-    findOne(root: unknown, args: {id: number}, context: {avos: Avocado[]}): Avocado {
-        return context.avos[args.id];
+    async findOne(root: unknown, args: { id: number }, context: context): Promise<Avocado | null> {
+        return  await context.orm.avocado.findUnique({
+            where: {
+                id: args.id
+            }
+        });   
     }
 }
