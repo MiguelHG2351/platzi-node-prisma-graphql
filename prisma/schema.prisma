@@ -35,3 +35,9 @@ model Attributes {
   avocadoId   Int
 }
 
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}

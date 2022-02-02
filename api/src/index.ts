@@ -1,6 +1,5 @@
 import { ApolloServer } from 'apollo-server-express'
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core'
-import express from 'express'
 import http from 'http'
 import path from 'path'
 import { readFileSync } from 'fs'
@@ -13,20 +12,23 @@ const typeDefs = readFileSync(
     {
         encoding: 'utf-8'
     }
-);
+)
 
-(async function app() {
-    const app = express()
+!(async function app() {
+    const { app } = await import('./server')
     const httpServer = http.createServer(app)
-    
-    app.use('/static', express.static(path.join(__dirname, '../public')))
     
     const server = new ApolloServer({
         typeDefs,
         resolvers,
         introspection: true,
-        context: {
-            orm: prisma
+        context: ({ req }) => {
+            console.log('req user: ', req.user)
+            
+            return {
+                orm: prisma,
+                user: req.user
+            }
         },
         plugins: [
             ApolloServerPluginDrainHttpServer({httpServer})
