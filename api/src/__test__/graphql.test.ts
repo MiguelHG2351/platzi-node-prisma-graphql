@@ -60,7 +60,7 @@ test('should return a list of avos', async () => {
 	`;
 
 	const result = await tester.graphql(query, undefined, context);
-	console.log(result)
+	expect(mockContext.orm.avocado.findMany).toHaveBeenCalledTimes(1);
 	expect(result.data).toEqual({
 		getAvos:[
 			{
@@ -70,4 +70,38 @@ test('should return a list of avos', async () => {
 			}
 		]
 	});
+	expect(mockContext.orm.avocado.findMany).toHaveBeenCalledWith({
+		include: {
+			attributes: true
+		},
+		where: undefined,
+		skip: undefined,
+		take: undefined
+	});
+})
+
+test('should filter a list of avos', async () => {
+	mockContext.orm.avocado.findMany.mockResolvedValue([])
+	
+	const query = gql`
+		query {
+			getAvos(where: { name: { contains: "Hass" } }, skip: 1) {
+				id
+				name
+			}
+		}
+	`
+	const results = await tester.graphql(query, undefined, context);
+	console.log('data is ', results)
+	expect(results.data).toEqual({
+		getAvos: []
+	});
+
+	expect(mockContext.orm.avocado.findMany).toHaveBeenCalledTimes(1);
+	expect(mockContext.orm.avocado.findMany).toHaveBeenCalledWith({
+		include: { attributes: true },
+		where: { name: { contains: 'Hass' } },
+		take: undefined,
+		skip: 1,
+	})
 })
