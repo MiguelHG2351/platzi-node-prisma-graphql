@@ -1,5 +1,6 @@
-import type { Avocado, Attributes } from '@prisma/client'
+import type { PrismaClient, User, Avocado, Attributes } from '@prisma/client'
 
+export type ResolverContext = { orm: PrismaClient; user: User | undefined }
 
 export const resolver: Record<keyof (Avocado & { attributes: Attributes }), (parent: Avocado & { attributes: Attributes }) => unknown> = {
     createdAt: (parent) => parent.createdAt,

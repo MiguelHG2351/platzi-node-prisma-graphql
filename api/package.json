@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "description": "Backend de nuestra aplicación con una API en GraphQL",
   "scripts": {
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "start": "nodemon src/index.ts",
+    "test": "jest src"
   },
   "main": "index.js",
   "dependencies": {
@@ -13,6 +15,7 @@
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.1",
     "cors": "^2.8.5",
+    "easygraphql-tester": "^6.0.1",
     "express": "^4.17.2",
     "graphql": "^14.6.0",
     "jose": "^4.4.0",
@@ -25,6 +28,11 @@
   "devDependencies": {
     "@prisma/client": "^3.7.0",
     "@types/bcrypt": "^5.0.0",
-    "@types/prompt": "^1.1.2"
+    "@types/jest": "^27.4.0",
+    "@types/prompt": "^1.1.2",
+    "graphql-tag": "^2.12.6",
+    "jest": "^27.4.7",
+    "jest-mock-extended": "^2.0.4",
+    "ts-jest": "^27.1.3"
   }
 }
