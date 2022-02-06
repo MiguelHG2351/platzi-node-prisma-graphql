@@ -7,6 +7,9 @@
   "repository": "git@github.com:MiguelHG2351/platzi-node-prisma-graphql.git",
   "author": "@MiguelHG2351",
   "license": "MIT",
+  "scripts": {
+    "build": "yarn workspaces run build"
+  },
   "workspaces": [
     "api",
     "client",
