@@ -16,7 +16,7 @@
     "package/*"
   ],
   "engines": {
-    "node": ">=14.x"
+    "node": ">=14.x <17"
   },
   "prettier": {
     "trailingComma": "es5",
