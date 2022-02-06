@@ -31,6 +31,7 @@ input AvocadoInput {
     name: String!
     price: Float!
     image: String!
+    sku: String!
     description: String!
     shape: String!
     hardiness: String!

@@ -1,21 +1,12 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Node 16",
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
-    "lib": ["es2021"],
-    "target": "es2021",
-    "moduleResolution": "Node",
-    "outDir": "./dist",
+    "lib": ["ES2020"],
     "module": "commonjs",
-    "types": ["node"],
-
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "target": "ES2020",
+    "outDir": "../dist",
+    "types": ["node", "jest"]
   },
-  
   "exclude": ["**/*.spec.ts"],
   "include": ["**/*.ts"]
 }

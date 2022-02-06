@@ -3,6 +3,10 @@ import path from 'path'
 import cors from 'cors'
 import { urlencoded, json } from 'body-parser'
 
+if(process.env.NODE_ENV !== 'production') {
+    require('dotenv').config({ path: path.join(__dirname, '../.env') })
+}
+
 import auth, { login, currentUser } from './auth'
 
 export const app = express()
