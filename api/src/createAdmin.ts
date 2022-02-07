@@ -4,6 +4,9 @@ import prompt from 'prompt'
 
 const orm = new PrismaClient()
 
+
+// miguelhernandez
+// aprendeConPlatzi
 prompt.start()
 
 prompt.get(

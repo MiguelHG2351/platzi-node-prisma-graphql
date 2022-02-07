@@ -60,6 +60,7 @@ test('should return a list of avos', async () => {
 	`;
 
 	const result = await tester.graphql(query, undefined, context);
+	console.log('data ', result);
 	expect(mockContext.orm.avocado.findMany).toHaveBeenCalledTimes(1);
 	expect(result.data).toEqual({
 		getAvos:[
